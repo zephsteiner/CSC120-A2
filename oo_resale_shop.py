@@ -30,6 +30,16 @@ class ResaleShop:
         else:
             print("Item", item_id, "not found. Please select another item to refurbish.")
 
+    def print_inventory(self):
+        # If the inventory is not empty
+        if self.inventory:
+            # For each item
+            for item_id in self.inventory:
+                # Print its details
+                print(f'Item ID: {item_id} : {self.inventory[item_id].__dict__}')
+        else:
+            print("No inventory to display.")
+
 def main():
     pass
 
