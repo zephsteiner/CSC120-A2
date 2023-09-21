@@ -1,3 +1,5 @@
+from typing import Dict, Union, Optional
+
 class Computer:
     description: str = ""
     processorType: str = ""
@@ -18,9 +20,25 @@ class Computer:
         
     def updateOS(self, new_os):
         self.operatingSystem = new_os
+        if new_os is not None:
+            self.operatingSystem = new_os # update details after installing new OS
         print(f"Update to {new_os} complete.")
 
-    def updatePrice(self, new_price):
-        self.price = new_price
-        print(f"Updated price to {new_price}.")
-    # What methods will you need?
+    def updatePrice(self):
+        if self.yearMade < 2000:
+            self.price = 0 # too old to sell, donation only
+        elif self.yearMade < 2012:
+            self.price = 250 # heavily-discounted price on machines 10+ years old
+        elif self.yearMade < 2018:
+            self.price = 550 # discounted price on machines 4-to-10 year old machines
+        else:
+            self.price = 1000 # recent stuff
+
+def main():
+    newComputer: Computer = Computer("Mac Pro (Late 2013)",
+        "3.5 GHc 6-Core Intel Xeon E5",
+        1024, 64,
+        "macOS Big Sur", 2013, 1500)
+
+if __name__ == "__main__":
+    main()
