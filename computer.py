@@ -1,6 +1,35 @@
-from typing import Dict, Union, Optional
+"""
+   Filename: computer.py
+Description: This file creates the Computer class, which stores information about a given
+             computer. It contains functions to update some of this information.
+     Author: Zephyr Steiner
+       Date: 21 September 2022
+"""
 
 class Computer:
+    """
+    A class to represent a computer.
+
+    ...
+
+    Attributes
+    ----------
+    description: str
+    processorType: str
+    hardDriveCapacity: int
+    memory: int
+    operatingSystem: str
+    yearMade: int
+    price: int
+
+    Methods
+    -------
+    updateOS(new_os):
+        Takes in a new_os and updates the operatingSystem attribute with new information
+    updatePrice():
+        Based on the yearMade, updates the price attribute with new information
+    """
+
     description: str = ""
     processorType: str = ""
     hardDriveCapacity: int = 0
@@ -19,12 +48,16 @@ class Computer:
         self.price = price
         
     def updateOS(self, new_os):
+        """
+        Takes in a new_os and updates the operatingSystem attribute with new information
+        """
         self.operatingSystem = new_os
-        if new_os is not None:
-            self.operatingSystem = new_os # update details after installing new OS
         print(f"Update to {new_os} complete.")
 
     def updatePrice(self):
+        """
+        Based on the yearMade, updates the price attribute with new information
+        """
         if self.yearMade < 2000:
             self.price = 0 # too old to sell, donation only
         elif self.yearMade < 2012:
@@ -33,12 +66,3 @@ class Computer:
             self.price = 550 # discounted price on machines 4-to-10 year old machines
         else:
             self.price = 1000 # recent stuff
-
-def main():
-    newComputer: Computer = Computer("Mac Pro (Late 2013)",
-        "3.5 GHc 6-Core Intel Xeon E5",
-        1024, 64,
-        "macOS Big Sur", 2013, 1500)
-
-if __name__ == "__main__":
-    main()
